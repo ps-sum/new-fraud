@@ -34,11 +34,12 @@ RUN pipenv install --deploy --ignore-pipfile --python /usr/local/bin/python
 COPY . .
 
 # Set environment variables
+ENV PORT=10000
 ENV FLASK_APP=lab/backend/app.py
 ENV FLASK_RUN_HOST=0.0.0.0
 
 # Expose the port the app runs on
-EXPOSE 5001
+EXPOSE $PORT
 
-# Run the application
-CMD ["pipenv", "run", "flask", "run", "--host=0.0.0.0", "--port=5001"]
+# Start Flask using dynamic port
+CMD ["sh", "-c", "pipenv run flask run --host=0.0.0.0 --port=$PORT"]
