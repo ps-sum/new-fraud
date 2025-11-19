@@ -34,8 +34,8 @@ RUN pipenv install --deploy --ignore-pipfile --python /usr/local/bin/python
 COPY . .
 
 # Set environment variables
-ENV PORT=10000
-ENV FLASK_APP=lab/backend/app.py
+ENV PORT=${PORT}
+ENV FLASK_APP=lab.backend.app.py
 ENV FLASK_RUN_HOST=0.0.0.0
 
 # Expose the port the app runs on
